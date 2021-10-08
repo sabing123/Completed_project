@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 class Aboutus(models.Model):
@@ -24,13 +25,15 @@ class CourseOffered(models.Model):
     def __str__(self):
         return self.course_title
 
+
 Gallery_CHOICES = (
-    ('all','ALL'),
+    ('all', 'ALL'),
     ('lab', 'LAB'),
-    ('classroom','CLASSROOM'),
-    ('students','STUDENTS'),
-    ('other','OTHER'),
+    ('classroom', 'CLASSROOM'),
+    ('students', 'STUDENTS'),
+    ('other', 'OTHER'),
 )
+
 
 class Gallery(models.Model):
     gallery_id = models.AutoField
@@ -50,7 +53,7 @@ class PremiumCourse(models.Model):
 
     def __str__(self):
         return self.course_title
-        
+
 
 class StudentRegister(models.Model):
     std_id = models.AutoField
@@ -63,17 +66,19 @@ class StudentRegister(models.Model):
     state = models.CharField(max_length=50, default="")
     email = models.EmailField()
     mobile = models.CharField(max_length=50, default="")
-    course = models.ForeignKey(CourseOffered, on_delete=models.CASCADE )
+    course = models.ForeignKey(CourseOffered, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.first_name
 
+
 GENDER = (
-    ('select','SELECT'),
+    ('select', 'SELECT'),
     ('Male', 'MALE'),
     ('Female', 'FEMALE'),
-    ('Other','OTHER'),
+    ('Other', 'OTHER'),
 )
+
 
 class PremiumCourseEnroll(models.Model):
     crsenroll_id = models.AutoField
@@ -86,3 +91,15 @@ class PremiumCourseEnroll(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class relatedCourses(models.Model):
+    rc_id = models.AutoField(primary_key=True)
+    rc_name = models.CharField(max_length=50, default="")
+    rc_description = models.CharField(max_length=140, default="")
+    rc_category = models.CharField(max_length=50, default="")
+    rc_duration = models.CharField(max_length=50, default="")
+    rc_image = models.ImageField(upload_to="images/relatesdcourses", default="")
+
+    def __str__(self):
+        return self.rc_name

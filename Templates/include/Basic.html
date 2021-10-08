@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
     <link rel="shortcut icon" href="{% static 'assets/img/logo.png' %}" type="image/x-icon">
-
-
     <!-- Font awesome -->
     <link href="{% static 'assets/css/font-awesome.css' %}" rel="stylesheet">
     <!-- Bootstrap -->
@@ -56,10 +54,13 @@
     <style type="text/css">
     </style>
 
-
     <title>
         {% block title %} {%endblock%}
     </title>
+    <style>
+       {% block css %} {%endblock%}
+
+    </style>
 </head>
 <body id="top">
 

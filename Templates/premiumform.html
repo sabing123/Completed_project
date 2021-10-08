@@ -1,42 +1,51 @@
 {% extends 'include/basic.html' %}
-{% block title %} Max Pro | Contact {%endblock%}
+{% block title %} Max Pro | Permium Course Registration {%endblock%}
 {% load static %}
 {% block body %}
 
 {% load widget_tweaks %}
+<div style=" margin:20px; padding:10px;">
+    <form method="post" action="">
+        {% csrf_token %}
 
-<form method="post" action="">
-  {% csrf_token %}
+        <div class="modal-header" style="width:70%; margin:auto;">
+            <h3 class="modal-title my-2" >Register for Premium Course
 
-  <div class="modal-header">
-    <h3 class="modal-title">Register for Premium Course</h3>
-  </div>
+            </h3>
+             {% include 'include/message.html' %}
 
-  <div class="modal-body">
-    <div class="{% if form.non_field_errors %}invalid{% endif %} mb-2">
-      {% for error in form.non_field_errors %}
-        {{ error }}
-      {% endfor %}
-    </div>
-
-    {% for field in form %}
-      <div class="form-group">
-        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-        {% render_field field class="form-control" placeholder=field.label %}
-        <div class="{% if field.errors %} invalid{% endif %}">
-          {% for error in field.errors %}
-            <p class="help-block">{{ error }}</p>
-          {% endfor %}
         </div>
-      </div>
-    {% endfor %}
-  </div>
 
-  <div class="modal-footer">
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </div>
+        <div class="modal-body">
 
-</form>
+
+            <div class="{% if form.non_field_errors %}invalid{% endif %} mb-2">
+                {% for error in form.non_field_errors %}
+                {{ error }}
+                {% endfor %}
+            </div>
+
+            {% for field in form %}
+            <div class="form-group " style="width:70%; margin:auto;">
+
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {% render_field field class="form-control" placeholder=field.label %}
+                <div class="{% if field.errors %} invalid{% endif %}">
+                    {% for error in field.errors %}
+                    <p class="help-block">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+
+        <div class="modal-footer" style="width:70%; margin:auto;">
+            <button type="submit" class="btn btn-primary">Enroll Premium Course</button>
+        </div>
+
+    </form>
+</div>
 
 
 {%endblock%}

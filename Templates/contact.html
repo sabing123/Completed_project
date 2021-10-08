@@ -4,53 +4,51 @@
 {% block body %}
 
 
- <!-- Start contact  -->
- <section id="mu-contact">
-   <div class="container">
-     <div class="row">
-       <div class="col-md-12">
-         <div class="mu-contact-area">
-          <!-- start title -->
-          <div class="mu-title">
-            <h2>Get in Touch</h2>
-          </div>
-          <!-- end title -->
-          <!-- start contact content -->
-          {% if messages %}
-          <ul class="messages">
-              {% for message in messages %}
-              <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-              {% endfor %}
-          </ul>
-          {% endif %}
-          <div class="container">           
-            <div class="row">
-              <div class="col-md-6">
-                <div class="mu-contact-left">                 
-                    <form action="" method="POST">
-                      <table>
-                      {% csrf_token %}
-                      {{ form.as_table }}
-                      <td></td>
-                      <td><input class="btn btn-success" type="submit" value="Submit">  </td>
-                      </table>         
-                  </form>
+<!-- Start contact  -->
+<section id="mu-contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-contact-area">
+                    <!-- start title -->
+                    <div class="mu-title">
+                        <h2>Get in Touch</h2>
+                    </div>
+                    <!-- end title -->
+                    <!-- start contact content -->
+
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mu-contact-left">
+                                    {% include 'include/message.html' %}
+                                    <form action="" method="POST">
+                                        <table>
+                                            {% csrf_token %}
+                                            {{ form.as_table }}
+                                            <td></td>
+                                            <td><input class="btn btn-success" type="submit" value="Submit"></td>
+                                        </table>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mu-contact-right">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14131.0648168468!2d85.2812989!3d27.69362!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4c0f4956f7b970f2!2sMAXPRO%20COMPUTER%20INSTITUTE!5e0!3m2!1sen!2snp!4v1612538295320!5m2!1sen!2snp"
+                                            width="100%" height="450" frameborder="0" style="border:0"
+                                            allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end contact content -->
                 </div>
-              </div>
-              <div class="col-md-6">
-                <div class="mu-contact-right">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14131.0648168468!2d85.2812989!3d27.69362!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4c0f4956f7b970f2!2sMAXPRO%20COMPUTER%20INSTITUTE!5e0!3m2!1sen!2snp!4v1612538295320!5m2!1sen!2snp"  width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </div>
-              </div>
             </div>
-          </div>
-          <!-- end contact content -->
-         </div>
-       </div>
-     </div>
-   </div>
- </section>
- <!-- End contact  -->
+        </div>
+    </div>
+</section>
+<!-- End contact  -->
 
 
- {%endblock%}
+{%endblock%}

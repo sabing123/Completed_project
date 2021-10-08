@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import ModelForm
+from django.forms import ModelForm, TextInput
 from .models import PremiumCourseEnroll
 
 class PremiumCourseForm(ModelForm):
@@ -9,15 +9,13 @@ class PremiumCourseForm(ModelForm):
     
 
 class ContactForm(forms.Form):
-    name = forms.CharField(max_length=30)
-    email = forms.EmailField(max_length=254)
+    name = forms.CharField(max_length=30,
+                           widget=TextInput(attrs={'class': 'form-label form-label-top form-label-extended form-label-auto'}))
+    email = forms.EmailField(max_length=254,
+                             widget=TextInput(attrs={'class': 'form-label form-label-top form-label-extended form-label-auto'}))
     message = forms.CharField(
         max_length=1000,
-        widget=forms.Textarea(),
-    )
-    source = forms.CharField(       # A hidden input for internal use
-        max_length=50,              # tell from which page the user sent the message
-        widget=forms.HiddenInput()
+        widget=forms.Textarea(attrs={'class': 'form-label form-label-top form-label-extended form-label-auto'}),
     )
 
     def clean(self):
